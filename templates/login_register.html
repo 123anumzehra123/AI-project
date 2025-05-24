@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Mental Health Detector</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://img.freepik.com/free-photo/abstract-fantasy-landscape-with-color-year-purple-tones_23-2151394179.jpg?semt=ais_hybrid&w=740') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h2 {
+      color: #7b4da6;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    button {
+      background-color: #7b4da6;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #63389c;
+    }
+
+    .switch-link {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .switch-link a {
+      color: #7b4da6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .switch-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="form-container">
+    <h2 id="form-title">Welcome Back!</h2>
+    <p id="form-subtitle">Please log in to continue</p>
+    <form id="auth-form" method="POST" action="/login">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <div class="switch-link">
+      Don't have an account? <a href="#" onclick="switchForm()">Register</a>
+    </div>
+  </div>
+
+  <script>
+    let isLogin = true;
+
+    function switchForm() {
+      const container = document.getElementById('form-container');
+      const title = document.getElementById('form-title');
+      const subtitle = document.getElementById('form-subtitle');
+      const form = document.getElementById('auth-form');
+      const link = document.querySelector('.switch-link');
+
+      if (isLogin) {
+        title.innerText = "Join the Community!";
+        subtitle.innerText = "Register to take your mental health screening";
+        form.setAttribute('action', '/register');
+        form.innerHTML = `
+          <input type="text" name="username" placeholder="Username" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <button type="submit">Register</button>
+        `;
+        link.innerHTML = `Already have an account? <a href="#" onclick="switchForm()">Login</a>`;
+        isLogin = false;
+      } else {
+        title.innerText = "Welcome Back!";
+        subtitle.innerText = "Please log in to continue";
+        form.setAttribute('action', '/login');
+        form.innerHTML = `
+          <input type="text" name="username" placeholder="Username" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+        `;
+        link.innerHTML = `Don't have an account? <a href="#" onclick="switchForm()">Register</a>`;
+        isLogin = true;
+      }
+    }
+  </script>
+</body>
+</html>
