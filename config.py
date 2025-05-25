@@ -6,7 +6,6 @@ class Config:
 
     DATABASE_URL = "postgresql://neondb_owner:npg_XibBn1K8PhZV@ep-black-bush-a5i7t6bx-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
 
-
 @staticmethod
 def get_connection():
     

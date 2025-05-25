@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCheck | Your Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        /* Results Page Specific Styles */
+        .report-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .report-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #6c5ce7;
+            padding-bottom: 1rem;
+        }
+        
+        .result-card {
+            background: #f8f9fa;
+            border-left: 5px solid #6c5ce7;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+        }
+        
+        .result-value {
+            font-size: 1.8rem;
+            color: #6c5ce7;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+        
+        .tips-section {
+            background: #f0f0ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .tips-section h3 {
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+        }
+        
+        .tips-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .tips-section li {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 6px;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .tips-section li:before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #6c5ce7;
+            position: absolute;
+            left: 1rem;
+        }
+        
+        .download-btn {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #5649c0;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background elements -->
+    <div class="bubble" style="width: 100px; height: 100px; top: 20%; left: 5%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 80px; height: 80px; top: 80%; left: 10%; animation-delay: 4s;"></div>
+    <div class="bubble" style="width: 120px; height: 120px; top: 30%; left: 70%; animation-delay: 6s;"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="logo">
+            <i class="fas fa-brain"></i>
+            <span>MindCheck</span>
+        </a>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('logout') }}">
+                <button class="btn btn-primary">Logout</button>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Main content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Quick Actions</h2>
+            <a href="{{ url_for('questionnaire') }}" class="sidebar-link">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Test Again</span>
+            </a>
+            <a href="#" class="sidebar-link">
+                <i class="fas fa-lightbulb"></i>
+                <span>More Tips</span>
+            </a>
+        </aside>
+        
+        <!-- Main content area -->
+        <main class="main-content">
+            <div class="report-container">
+                <div class="report-header">
+                    <h1><i class="fas fa-file-alt"></i> Your Mental Health Report</h1>
+                </div>
+                
+                <div class="user-greeting">
+                    <h2>Hello, {{ name }}!</h2>
+                    <p>Thank you for completing your mental health assessment. Here are your results:</p>
+                </div>
+                
+                <div class="result-card">
+                    <h3>Assessment Result</h3>
+                    <p>Based on your responses, your predicted mental health condition is:</p>
+                    <div class="result-value">{{ result }}</div>
+                    <p class="disclaimer">Note: This is not a medical diagnosis. Please consult a healthcare professional for clinical assessment.</p>
+                </div>
+                
+                {% if tips %}
+                <div class="tips-section">
+                    <h3><i class="fas fa-hands-helping"></i> Recommended Self-Care Strategies</h3>
+                    <ul>
+                        {% for tip in tips %}
+                        <li>{{ tip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                <div class="actions">
+                    <button class="download-btn" onclick="window.print()">
+                        <i class="fas fa-download"></i> Download Report
+                    </button>
+                    <a href="{{ url_for('contact') }}" class="btn btn-secondary">
+                        <i class="fas fa-user-md"></i> Contact Professional
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="{{ url_for('home') }}" class="footer-logo">MindCheck</a>
+            
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">FAQ</a>
+                <a href="{{ url_for('contact') }}">Contact Us</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 MindCheck Mental Disorder Detector. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Create more animated bubbles
+        document.addEventListener('DOMContentLoaded', function() {
+            const colors = ['rgba(108, 92, 231, 0.2)', 'rgba(253, 121, 168, 0.2)', 'rgba(162, 155, 254, 0.2)'];
+            
+            for (let i = 0; i < 8; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                const size = Math.random() * 100 + 50;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.background = color;
+                bubble.style.top = `${Math.random() * 100}%`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.animationDelay = `${Math.random() * 8}s`;
+                
+                document.body.appendChild(bubble);
+            }
+            
+            // Add current date
+            document.querySelector('.report-header p').textContent = 
+                'Generated on ' + new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+        });
+    </script>
+</body>
+</html>

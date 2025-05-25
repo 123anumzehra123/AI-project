@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | MindCheck</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <!-- Animated background elements -->
+    <div class="bubble" style="width: 100px; height: 100px; top: 20%; left: 5%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 80px; height: 80px; top: 80%; left: 10%; animation-delay: 4s;"></div>
+    <div class="bubble" style="width: 120px; height: 120px; top: 30%; left: 70%; animation-delay: 6s;"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="logo">
+            <i class="fas fa-brain"></i>
+            <span>MindCheck</span>
+        </a>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}" class="active">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('login') }}">
+                <button class="btn btn-primary">Login</button>
+            </a>
+            <a href="{{ url_for('register') }}">
+                <button class="btn btn-primary">Register</button>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Main content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Quick Actions</h2>
+            <a href="{{ url_for('questionnaire') }}" class="sidebar-link">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Test Yourself</span>
+            </a>
+            <a href="#" class="sidebar-link">
+                <i class="fas fa-lightbulb"></i>
+                <span>Get Tips</span>
+            </a>
+        </aside>
+        
+        <!-- Main content area -->
+        <main class="main-content">
+            <div class="hero about-hero">
+                <h1>About <span>MindCheck</span></h1>
+                <p>Your trusted partner in mental health awareness and self-assessment</p>
+            </div>
+            
+            <div class="about-grid">
+                <!-- Mission and Vision -->
+                <div class="about-row">
+                    <div class="about-card">
+                        <i class="fas fa-bullseye"></i>
+                        <h2>Our Mission</h2>
+                        <p>To make mental health assessment accessible to everyone, breaking down barriers and stigma through technology.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <i class="fas fa-eye"></i>
+                        <h2>Our Vision</h2>
+                        <p>A world where mental health is prioritized as much as physical health, with tools for self-awareness readily available.</p>
+                    </div>
+                </div>
+                
+                <!-- How It Works and Technology -->
+                <div class="about-row">
+                    <div class="about-card">
+                        <i class="fas fa-cogs"></i>
+                        <h2>How It Works</h2>
+                        <p>Our evidence-based questionnaires analyze responses using clinically validated models to provide personalized insights.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h2>Privacy Commitment</h2>
+                        <p>Your data is encrypted and never shared. We believe mental health tools should respect user confidentiality.</p>
+                    </div>
+                </div>
+                
+               <!-- Team Section -->
+<div class="about-card team-section">
+    <h2 class="text-center">Meet Our Development Team</h2>
+    <div class="team-grid">
+        <div class="team-member">
+            <div class="team-img">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3>Ambreen Fatima</h3>
+            <p class="role">Full Stack Developer</p>
+            <p class="bio">Bridges frontend and backend systems with expertise in API development and integration.</p>
+        </div>
+        <div class="team-member">
+            <div class="team-img">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Sarah Tayyab Janjua</h3>
+            <p class="role">Lead Backend Developer</p>
+            <p class="bio">Specializes in Python, Flask, and database architecture with experience in health tech solutions.</p>
+        </div>
+        <div class="team-member">
+            <div class="team-img">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Anum Zehra</h3>
+            <p class="role">Lead Frontend Architect</p>
+            <p class="bio">Expert in responsive design and interactive UI development with focus on accessibility.</p>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Ready to understand your mental health better?</h2>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('questionnaire') }}" class="btn btn-primary">Take the Test</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="{{ url_for('home') }}" class="footer-logo">MindCheck</a>
+            
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">FAQ</a>
+                <a href="{{ url_for('contact') }}">Contact Us</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 MindCheck Mental Disorder Detector. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Create more animated bubbles
+        document.addEventListener('DOMContentLoaded', function() {
+            const colors = ['rgba(108, 92, 231, 0.2)', 'rgba(253, 121, 168, 0.2)', 'rgba(162, 155, 254, 0.2)'];
+            
+            for (let i = 0; i < 8; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                const size = Math.random() * 100 + 50;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.background = color;
+                bubble.style.top = `${Math.random() * 100}%`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.animationDelay = `${Math.random() * 8}s`;
+                
+                document.body.appendChild(bubble);
+            }
+        });
+    </script>
+</body>
+</html>
