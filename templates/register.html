@@ -136,25 +136,17 @@
         <p>Join MindCheck and take a step towards better mental clarity.</p>
         <form action="/register" method="POST">
             <div class="input-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="input-group">
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email" required>
+                <label for="username">Full Name</label>
+                <input type="text" id="username" name="username" required>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <div class="input-group">
-                <label for="confirm">Confirm Password</label>
-                <input type="password" id="confirm" name="confirm" required>
-            </div>
             <button type="submit" class="register-btn">Register</button>
         </form>
         <div class="login-redirect">
-            Already have an account? <a href="/login">Login here</a>
+            Already have an account? <a href="{{url_for('login')}}">Login here</a>
         </div>
     </div>
 

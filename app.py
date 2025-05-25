@@ -22,6 +22,13 @@ def about():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/tips')
+def tips():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    return render_template('tips.html', username=session['user'])
+
 #LOGIN
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -36,9 +43,13 @@ def login():
 
         if user and bcrypt.check_password_hash(user[0], password):
             session['user'] = username
-            return redirect(url_for('questionnaire'))
+            return render_template('login.html', 
+                                message="Login successful! Redirecting...",
+                                message_type="success")
         else:
-            return "Invalid login. <a href='/login'>Try again</a>"
+            return render_template('login.html',
+                                message="Invalid username or password",
+                                message_type="danger")
 
     return render_template('login.html')  # login form
 
