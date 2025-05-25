@@ -10,7 +10,7 @@ bcrypt = Bcrypt(app)
 # Neon DB connection
 conn = psycopg2.connect("postgresql://neondb_owner:npg_XibBn1K8PhZV@ep-black-bush-a5i7t6bx-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require")
 
-# 🚀 HOME route (Main Landing Page with bg image/video)
+# HOME route (Main Landing Page with bg image/video)
 @app.route('/')
 def home():
     return render_template('home.html')  # <- NEW main homepage with bg video + navbar
@@ -22,7 +22,7 @@ def about():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
-# 💻 LOGIN
+#LOGIN
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -42,7 +42,7 @@ def login():
 
     return render_template('login.html')  # login form
 
-# 📝 REGISTER
+#REGISTER
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -63,7 +63,7 @@ def register():
 
     return render_template('register.html')
 
-# 🌈 QUESTIONNAIRE PAGE
+#QUESTIONNAIRE PAGE
 # Add this at the top with other imports
 from functools import wraps
 
@@ -82,7 +82,7 @@ def login_required(f):
 def questionnaire():
     return render_template('questionnaire.html', username=session['user'])
 
-# 🔍 SUBMIT ANSWERS & PREDICT
+#SUBMIT ANSWERS & PREDICT
 @app.route('/submit_answers', methods=['POST'])
 def submit_answers():
     if 'user' not in session:
@@ -115,12 +115,12 @@ def submit_answers():
         conn.rollback()
         return f"Error saving answers: {e}"
 
-# 🔐 LOGOUT
+#LOGOUT
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('home'))
 
-# 🔧 RUN THE APP
+#RUN THE APP
 if __name__ == '__main__':
     app.run(debug=True)
