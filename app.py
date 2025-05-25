@@ -99,14 +99,12 @@ def submit_answers():
     try:
         result = predict_disorder(answers)
 
-        tips_dict = {
-            'Anxiety': ["Practice deep breathing.", "Avoid caffeine.", "Talk to someone."],
-            'Depression': ["Set small goals.", "Stay connected.", "Move your body."],
-            'ADHD': ["Break tasks down.", "Use timers.", "Stick to routines."],
-            'OCD': ["Challenge thoughts.", "Avoid reassurance.", "Try ERP."],
-            'PTSD': ["Use grounding.", "Avoid triggers.", "Talk to a therapist."],
-            'BPD': ["Use DBT.", "Journal often.", "Set boundaries."],
-            'DID': ["Keep routine.", "Create safe space.", "See a specialist."]
+        tips = tips_dict = {
+            'adhd': ["Break tasks down.", "Use timers.", "Stick to routines."],
+            'ocd': ["Challenge thoughts.", "Avoid reassurance.", "Try ERP."],
+            'ptsd': ["Use grounding.", "Avoid triggers.", "Talk to a therapist."],
+            'bpd': ["Use DBT.", "Journal often.", "Set boundaries."],
+            'none': ["Stay positive and reach out when needed."]
         }
 
         tips = tips_dict.get(result, ["Stay positive and reach out when needed."])

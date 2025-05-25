@@ -1,13 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindCheck | Questionnaire</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Yourself</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="static/style.css">
 </head>
+<style>
+     .question {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .question p {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .options {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .options label:hover {
+            background: #f0f0ff;
+        }
+        
+        button[type="submit"] {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        button[type="submit"]:hover {
+            background: #5649c0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(108, 92, 231, 0.3);
+        }
+    </style>
 <body>
     <!-- Animated background elements -->
     <div class="bubble" style="width: 100px; height: 100px; top: 20%; left: 5%; animation-delay: 0s;"></div>
@@ -48,162 +101,131 @@
                 <span>Get Tips</span>
             </a>
         </aside>
-        
-        <!-- Main content area -->
-        <main class="main-content">
-            <div class="questionnaire-container">
-                <h1><i class="fas fa-clipboard-check"></i> Mental Health Screening</h1>
-                <form action="/submit_answers" method="POST">
-                    <div class="form-group">
-                        <label for="username"><i class="fas fa-user"></i> Full Name</label>
-                        <input type="text" id="username" name="username" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="age"><i class="fas fa-calendar-alt"></i> Age</label>
-                        <input type="number" id="age" name="age" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="gender"><i class="fas fa-venus-mars"></i> Gender</label>
-                        <select id="gender" name="gender" required>
-                            <option value="" disabled selected>Select gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="weight"><i class="fas fa-weight"></i> Weight (kg)</label>
-                        <input type="number" id="weight" name="weight">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email"><i class="fas fa-envelope"></i> Email (optional)</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    
-                    <!-- Questions 1-10 -->
-                    <div class="question">
-                        <p>1. Do you experience extreme emotional shifts?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q1" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q1" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q1" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
-                    
-                    <!-- Repeat similar structure for questions 2-10 -->
-                    <div class="question">
-                        <p>2. Do you feel a strong need to repeat actions (e.g. checking, cleaning)?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
-                    
-                    <!-- Continue with questions 3-10 -->
-                    <!-- ... -->
-                     <div class="question">
-                        <p>3. Do you find it difficult to stay focused for long periods?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
-                         <div class="question">
-                        <p>4. Have you ever experienced flashbacks of traumatic events?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
-                        <div class="question">
-                        <p>5. Do you worry excessively about being left or abandoned?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <p>6. Do you feel like there are “different parts” of you?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <p>7. Do you act impulsively or have difficulty with self-control?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
-                       <div class="question">
-                        <p>8. Do you avoid people, places, or events that remind you of past trauma?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
-                    <div class="question">
-                        <p>9. Do you regularly feel nervous or anxious without a clear cause?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
+  <div class="container">
+    <h1><center>Mental Health Screening</center></h1>
+    <form action="/submit_answers" method="POST">
 
-                    <div class="question">
-                        <p>10. Do you feel like you’re observing yourself from the outside?</p>
-                        <div class="options">
-                            <label><input type="radio" name="q2" value="yes" required> <i class="far fa-circle"></i> Yes</label>
-                            <label><input type="radio" name="q2" value="sometimes"> <i class="far fa-circle"></i> Sometimes</label>
-                            <label><input type="radio" name="q2" value="no"> <i class="far fa-circle"></i> No</label>
-                        </div>
-                    </div>
+      <div class="question">
+      <label for="username">Full Name</label>
+      <input type="text" id="username" name="username" required>
+      </div>
 
+      <div class="question">
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" required>
+      </div>
+      <div class="question">
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option disabled selected>Select gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      </div>
 
+    <div class="question">
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" name="weight">
+      </div>
 
-                    <button type="submit"><i class="fas fa-paper-plane"></i> Submit Answers</button>
-                </form>
-            </div>
-        </main>
-    </div>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <a href="{{ url_for('home') }}" class="footer-logo">MindCheck</a>
-            
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">FAQ</a>
-                <a href="{{ url_for('contact') }}">Contact Us</a>
-            </div>
-            
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            
-            <div class="copyright">
-                &copy; 2023 MindCheck Mental Disorder Detector. All rights reserved.
-            </div>
+      <label for="email">Email (optional)</label>
+      <input type="email" id="email" name="email">
+
+      <!-- Questions -->
+      <div class="question">
+        <p>1. Do you experience extreme emotional shifts?</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="yes"> Yes</label>
+          <label><input type="radio" name="q1" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q1" value="no"> No</label>
         </div>
-    </footer>
+      </div>
+
+      <div class="question">
+        <p>2. Do you feel a strong need to repeat actions (e.g. checking, cleaning)?</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="yes"> Yes</label>
+          <label><input type="radio" name="q2" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q2" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. Do you find it difficult to stay focused for long periods?</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="yes"> Yes</label>
+          <label><input type="radio" name="q3" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q3" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. Have you ever experienced flashbacks of traumatic events?</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="yes"> Yes</label>
+          <label><input type="radio" name="q4" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q4" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. Do you worry excessively about being left or abandoned?</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="yes"> Yes</label>
+          <label><input type="radio" name="q5" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q5" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. Do you feel like there are “different parts” of you?</p>
+        <div class="options">
+          <label><input type="radio" name="q6" value="yes"> Yes</label>
+          <label><input type="radio" name="q6" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q6" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. Do you act impulsively or have difficulty with self-control?</p>
+        <div class="options">
+          <label><input type="radio" name="q7" value="yes"> Yes</label>
+          <label><input type="radio" name="q7" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q7" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. Do you avoid people, places, or events that remind you of past trauma?</p>
+        <div class="options">
+          <label><input type="radio" name="q8" value="yes"> Yes</label>
+          <label><input type="radio" name="q8" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q8" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>9. Do you regularly feel nervous or anxious without a clear cause?</p>
+        <div class="options">
+          <label><input type="radio" name="q9" value="yes"> Yes</label>
+          <label><input type="radio" name="q9" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q9" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>10. Do you feel like you’re observing yourself from the outside?</p>
+        <div class="options">
+          <label><input type="radio" name="q10" value="yes"> Yes</label>
+          <label><input type="radio" name="q10" value="sometimes"> Sometimes</label>
+          <label><input type="radio" name="q10" value="no"> No</label>
+        </div>
+      </div>
+
+      <button type="submit">Submit Answers</button>
+    </form>
+  </div>
     
     <script>
         // Create more animated bubbles
@@ -226,6 +248,31 @@
                 
                 document.body.appendChild(bubble);
             }
+            
+            // Add animation to feature cards on scroll
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            function checkScroll() {
+                featureCards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight - 100) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Initialize
+            featureCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Run once on load
         });
     </script>
 </body>

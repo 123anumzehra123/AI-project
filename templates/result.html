@@ -149,7 +149,7 @@
                     <h3>Assessment Result</h3>
                     <p>Based on your responses, your predicted mental health condition is:</p>
                     <div class="result-value">{{ result }}</div>
-                    <p class="disclaimer">Note: This is not a medical diagnosis. Please consult a healthcare professional for clinical assessment.</p>
+                    <p class="disclaimer">Note: This report is AI Generated. Please consult a healthcare professional for clinical assessment.</p>
                 </div>
                 
                 {% if tips %}
@@ -167,9 +167,6 @@
                     <button class="download-btn" onclick="window.print()">
                         <i class="fas fa-download"></i> Download Report
                     </button>
-                    <a href="{{ url_for('contact') }}" class="btn btn-secondary">
-                        <i class="fas fa-user-md"></i> Contact Professional
-                    </a>
                 </div>
             </div>
         </main>
