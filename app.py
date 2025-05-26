@@ -43,15 +43,14 @@ def login():
 
         if user and bcrypt.check_password_hash(user[0], password):
             session['user'] = username
-            return render_template('login.html', 
-                                message="Login successful! Redirecting...",
-                                message_type="success")
+            # Redirect instead of render_template
+            return redirect(url_for('questionnaire'))
         else:
             return render_template('login.html',
                                 message="Invalid username or password",
                                 message_type="danger")
 
-    return render_template('login.html')  # login form
+    return render_template('login.html')
 
 #REGISTER
 @app.route('/register', methods=['GET', 'POST'])
@@ -89,7 +88,7 @@ def login_required(f):
 
 # Update your questionnaire route
 @app.route('/questionnaire')
-@login_required  # Add this decorator
+@login_required  # This ensures only logged-in users can access
 def questionnaire():
     return render_template('questionnaire.html', username=session['user'])
 
