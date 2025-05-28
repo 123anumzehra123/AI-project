@@ -25,9 +25,7 @@ def contact():
 
 @app.route('/tips')
 def tips():
-    if 'user' not in session:
-        return redirect(url_for('login'))
-    return render_template('tips.html', username=session['user'])
+    return render_template('tips.html')
 
 #LOGIN
 @app.route('/login', methods=['GET', 'POST'])
@@ -75,30 +73,30 @@ def register():
 
 #QUESTIONNAIRE PAGE
 # Add this at the top with other imports
-from functools import wraps
+#from functools import wraps
 
 # Create login_required decorator
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if 'user' not in session:
-            return redirect(url_for('login', next=request.url))
-        return f(*args, **kwargs)
-    return decorated_function
+#def login_required(f):
+ #   @wraps(f)
+  #  def decorated_function(*args, **kwargs):
+   #     if 'user' not in session:
+    #        return redirect(url_for('login', next=request.url))
+     #   return f(*args, **kwargs)
+   # return decorated_function
 
 # Update your questionnaire route
 @app.route('/questionnaire')
-@login_required  # This ensures only logged-in users can access
+#@login_required  # This ensures only logged-in users can access
 def questionnaire():
-    return render_template('questionnaire.html', username=session['user'])
+    return render_template('questionnaire.html')
 
 #SUBMIT ANSWERS & PREDICT
 @app.route('/submit_answers', methods=['POST'])
 def submit_answers():
-    if 'user' not in session:
-        return redirect(url_for('login'))
+    # if 'user' not in session:
+    #     return redirect(url_for('login'))
 
-    username = session['user']
+    username = request.form.get('username')  # Now fetch from form
     age = request.form.get('age')
     gender = request.form.get('gender')
     weight = request.form.get('weight')
@@ -109,7 +107,7 @@ def submit_answers():
     try:
         result = predict_disorder(answers)
 
-        tips = tips_dict = {
+        tips_dict = {
             'adhd': ["Break tasks down.", "Use timers.", "Stick to routines."],
             'ocd': ["Challenge thoughts.", "Avoid reassurance.", "Try ERP."],
             'ptsd': ["Use grounding.", "Avoid triggers.", "Talk to a therapist."],
@@ -122,8 +120,9 @@ def submit_answers():
         return render_template("result.html", result=result, name=username, tips=tips)
 
     except Exception as e:
-        conn.rollback()
         return f"Error saving answers: {e}"
+
+
 
 #LOGOUT
 @app.route('/logout')
